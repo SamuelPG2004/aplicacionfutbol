@@ -1,0 +1,133 @@
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #111111; 
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  
+ 
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+
+  header h1 {
+    text-align: center;
+    color: #FFB81C; 
+    margin-bottom: 30px;
+  }
+  
+ 
+  .filtro-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .filtro-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .filtro-input::placeholder {
+    color: #ccc;
+  }
+  
+  
+  .jugadores-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  
+  .jugador-card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .jugador-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+  }
+  
+  
+  .jugador-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #FFB81C;
+  }
+  
+
+  .jugador-card h3 {
+    color: #FFB81C;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+  }
+  
+  .jugador-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+  
+  
+  .jugador-card .goles {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #FF9900;
+    font-size: 1.2rem;
+  }
+  
+ 
+  footer {
+    background-color: #000000;
+    color: #FFB81C;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px;
+    font-weight: bold;
+  }
+  
+  
+  @media (max-width: 900px) {
+    .main-container {
+      padding: 30px 15px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .jugadores-container {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  
+    .jugador-card img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  
