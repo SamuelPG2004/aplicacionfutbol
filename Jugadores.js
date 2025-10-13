@@ -1,58 +1,33 @@
-class Jugador {
-    constructor(nombre, equipo, foto, posicion, goles) {
-      this.nombre = nombre;
-      this.equipo = equipo;
-      this.foto = foto;
-      this.posicion = posicion;
-      this.goles = goles;
-    }
+const url = 'https://v3.football.api-sports.io/players?league=140&season=2025&page=1';
+
+fetch(url, {
+  method: 'GET',
+  headers: {
+    'x-apisports-key': 'cb132c9eba52f10855f7808d07c75c3'
   }
-  
-  class Jugadores {
-    constructor(url) {
-      this.url = url;
-      this.jugadores = [];
-    }
-  
-    async cargarJugadores() {
-      try {
-        const response = await fetch(this.url);
-        const data = await response.json();
-  
-        
-        this.jugadores = data.response.map(j => new Jugador(
-          j.player.name,
-          j.statistics[0].team.name,
-          j.player.photo,
-          j.statistics[0].games.position,
-          j.statistics[0].goals.total
-        ));
-  
-        this.mostrarJugadores();
-      } catch (error) {
-        console.error("Error al obtener jugadores:", error);
-      }
-    }
-  
-    mostrarJugadores() {
-      const container = document.getElementById('jugadoresContainer');
-      container.innerHTML = '';
-      this.jugadores.forEach(j => {
-        const div = document.createElement('div');
-        div.className = 'jugador-card';
-        div.innerHTML = `
-          <img src="${j.foto}" alt="${j.nombre}">
-          <h4>${j.nombre}</h4>
-          <p>${j.equipo}</p>
-          <p>${j.posicion}</p>
-          <p>Goles: ${j.goles}</p>
-        `;
-        container.appendChild(div);
-      });
-    }
-  }
-  
-  
-  const jugadores = new Jugadores('http://localhost:3000/jugadores');
-  jugadores.cargarJugadores();
-  
+})
+.then(res => res.json())
+.then(data => {
+  const jugadores = data.response;
+  let html = '<table class="tabla-liga"><thead><tr><th>Jugador</th><th>Edad</th><th>Equipo</th><th>Posición</th><th>Partidos</th><th>Goles</th><th>Asistencias</th></tr></thead><tbody>';
+  jugadores.forEach(j => {
+    const stats = j.statistics[0];
+    const foto = j.player.photo || 'img/default-player.png'; 
+
+    html += `<tr>
+      <td><img src="${foto}" alt="${j.player.name}" class="jugador-img"> ${j.player.name}</td>
+      <td>${j.player.age}</td>
+      <td>${stats.team.name}</td>
+      <td>${stats.games.position}</td>
+      <td>${stats.games.appearences || 0}</td>
+      <td>${stats.goals.total || 0}</td>
+      <td>${stats.goals.assists || 0}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('tablaJugadoresContainer').innerHTML = html;
+})
+.catch(err => {
+  console.error(err);
+  document.getElementById('tablaJugadoresContainer').innerHTML = '<p>Error al cargar los datos.</p>';
+});
