@@ -1,13 +1,10 @@
 
-const urlTabla = 'https://api.football-data.org/v4/competitions/PD/standings';
-
+const urlTabla = 'http://localhost/aplicacion-main/proxyTabla.php';
 const tablaLigaContainer = document.getElementById('tablaLigaContainer');
 
-async function cargarTablaLiga() {
+async function cargarTabla() {
     try {
-        const response = await fetch(urlTabla, {
-            headers: { 'X-Auth-Token': apiKey } 
-        });
+        const response = await fetch(urlTabla);
         const data = await response.json();
 
         const tabla = data.standings[0].table;
@@ -29,8 +26,7 @@ async function cargarTablaLiga() {
             <tbody>`;
 
         tabla.forEach(fila => {
-            html += `
-            <tr>
+            html += `<tr>
                 <td>${fila.position}</td>
                 <td><img src="https://crests.football-data.org/${fila.team.id}.svg" alt="${fila.team.name}">${fila.team.name}</td>
                 <td>${fila.points}</td>
@@ -47,15 +43,13 @@ async function cargarTablaLiga() {
         tablaLigaContainer.innerHTML = html;
 
     } catch (error) {
-        console.error("Error cargando tabla de liga:", error);
+        console.error("Error cargando tabla:", error);
         tablaLigaContainer.innerHTML = '<p>Error cargando tabla de posiciones.</p>';
     }
 }
 
+// Carga inicial
+cargarTabla();
 
-cargarTablaLiga();
-
-
-setInterval(() => {
-    cargarTablaLiga();
-}, 300000); 
+// Actualización automática cada 5 minutos (300000 ms)
+setInterval(cargarTabla, 300000);
