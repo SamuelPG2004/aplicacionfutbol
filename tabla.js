@@ -1,5 +1,5 @@
 
-const urlTabla = 'http://localhost/aplicacion-main/proxyTabla.php';
+const urlTabla = 'http://localhost:3000/api/standings';
 const tablaLigaContainer = document.getElementById('tablaLigaContainer');
 
 async function cargarTabla() {
