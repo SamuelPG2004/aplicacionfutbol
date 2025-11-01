@@ -1,5 +1,7 @@
 
-const urlTabla = 'http://localhost:3000/api/standings';
+// API base configurable via window.API_BASE (create config.js from config.sample.js before deploying)
+const API_BASE = window.API_BASE || (location.hostname === 'localhost' ? 'http://localhost:3000' : '');
+const urlTabla = (API_BASE ? API_BASE : '') + '/api/standings';
 const tablaLigaContainer = document.getElementById('tablaLigaContainer');
 
 async function cargarTabla() {

@@ -10,11 +10,13 @@ const equipoHeaderContainer = document.getElementById("equipoHeaderContainer");
 const equipoStats = document.getElementById("equipoStats");
 const ultimosPartidos = document.getElementById("ultimosPartidos");
 const proximosPartidos = document.getElementById("proximosPartidos");
+// API base configurable via window.API_BASE (create config.js from config.sample.js before deploying)
+const API_BASE = window.API_BASE || (location.hostname === 'localhost' ? 'http://localhost:3000' : '');
 
 // 3. Cargar estadísticas básicas del equipo desde standings
 async function cargarEstadisticas() {
   try {
-    const res = await fetch("/api/standings");
+  const res = await fetch((API_BASE ? API_BASE : '') + "/api/standings");
     const data = await res.json();
 
     const equipo = data.standings[0].table.find(t => t.team.id == equipoId);
@@ -57,7 +59,7 @@ async function cargarEstadisticas() {
 // 4. Cargar últimos partidos
 async function cargarUltimosPartidos() {
   try {
-    const res = await fetch(`/api/teams/${equipoId}/matches?status=FINISHED`);
+  const res = await fetch((API_BASE ? API_BASE : '') + `/api/teams/${equipoId}/matches?status=FINISHED`);
     const data = await res.json();
 
     ultimosPartidos.innerHTML = "";
@@ -103,7 +105,7 @@ async function cargarUltimosPartidos() {
 // 5. Cargar próximos partidos
 async function cargarProximosPartidos() {
   try {
-    const res = await fetch(`/api/teams/${equipoId}/matches?status=SCHEDULED`);
+  const res = await fetch((API_BASE ? API_BASE : '') + `/api/teams/${equipoId}/matches?status=SCHEDULED`);
     const data = await res.json();
 
     proximosPartidos.innerHTML = "";

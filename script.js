@@ -1,7 +1,9 @@
 
 
 // script.js
-const urlEquipos = 'http://localhost:3000/api/standings';
+// API base configurable via window.API_BASE (create config.js from config.sample.js before deploying)
+const API_BASE = window.API_BASE || (location.hostname === 'localhost' ? 'http://localhost:3000' : '');
+const urlEquipos = (API_BASE ? API_BASE : '') + '/api/standings';
 
 const equiposContainer = document.getElementById('equiposContainer');
 const buscarInput = document.getElementById('buscarEquipo');
