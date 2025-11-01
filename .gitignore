@@ -1,0 +1,19 @@
+# Ignorar variables de entorno
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos temporales
+node_modules/
+dist/
+# Variables de entorno
+.env
+
+# Dependencias
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*

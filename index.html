@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas de LaLiga</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Estadísticas de LaLiga</h1>
+  </header>
+
+  <main class="main-container">
+    <section id="equiposSection" class="card-section">
+      <h2>Selecciona un equipo</h2>
+      <input type="text" id="buscarEquipo" class="filtro-input" placeholder="Buscar equipo...">
+      <div class="slider-wrapper">
+        <button id="prevBtn" class="slider-btn">&#8249;</button>
+        <div id="equiposContainer" class="equipos-container">
+          <p>Cargando equipos...</p>
+        </div>
+        <button id="nextBtn" class="slider-btn">&#8250;</button>
+      </div>
+    </section>
+
+    <section id="tablaLigaSection" class="card-section">
+      <h2>Tabla de posiciones</h2>
+      <div id="tablaLigaContainer" class="tabla-liga-container">
+        <p>Cargando tabla de posiciones...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desarrollado por Samuel Peña</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tabla.js"></script>
+  <script src="equipo.js"></script>
+  <script>
+async function cargarStandings() {
+  try {
+    const response = await fetch('/football/v4/competitions/PD/standings');
+    const data = await response.json();
+    console.log("Standings:", data);
+    // aquí ya pintas la tabla en tu HTML
+  } catch (err) {
+    console.error("Error cargando standings:", err);
+  }
+}
+
+cargarStandings();
+</script>
+
+  
+</body>
+</html>

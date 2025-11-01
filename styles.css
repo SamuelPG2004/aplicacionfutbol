@@ -1,0 +1,197 @@
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111111; 
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.slider-btn {
+  background-color: #FFCC33;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.slider-btn:hover {
+  background-color: #FFB800;
+}
+
+#equiposContainer {
+  display: flex;
+  gap: 15px;
+  overflow-x: hidden;
+  flex: 1;
+  padding: 10px 0;
+}
+
+#equiposContainer button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #FFCC33, #FF9900);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+#equiposContainer button img.escudo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+
+.filtro-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 15px;
+  margin: 0 auto 20px auto;
+  display: block;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  background-color: #222;
+  color: #fff;
+}
+
+.filtro-input::placeholder {
+  color: #ccc;
+}
+
+
+.tabla-liga-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla-liga {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tabla-liga th, .tabla-liga td {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.tabla-liga th {
+  background-color: #222;
+  color: #FFCC33;
+  font-weight: bold;
+}
+
+.tabla-liga td img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.tabla-liga {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a; 
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto', sans-serif;
+}
+
+.tabla-liga thead {
+  background: linear-gradient(90deg, #FFCC33, #FF9900); /* degradado naranja */
+}
+
+.tabla-liga thead th {
+  color: #111; 
+  padding: 12px 8px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.tabla-liga tbody tr {
+  border-bottom: 1px solid #333;
+  transition: background 0.3s ease;
+}
+
+.tabla-liga tbody tr:hover {
+  background-color: #333333; 
+}
+
+.tabla-liga tbody td {
+  color: #fff;
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.tabla-liga tbody td img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 6px;
+  border-radius: 50%;
+}
+
+
+.tabla-liga tbody td:first-child,
+.tabla-liga tbody td:nth-child(3) {
+  font-weight: bold;
+  color: #FFCC33;
+}
+
+
+@media (max-width: 900px) {
+  .tabla-liga thead th, .tabla-liga tbody td {
+    padding: 8px 4px;
+    font-size: 0.8rem;
+  }
+  
+  .tabla-liga tbody td img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tabla-liga thead th {
+    font-size: 0.7rem;
+  }
+  
+  .tabla-liga tbody td {
+    font-size: 0.7rem;
+    padding: 6px 3px;
+  }
+  
+  .tabla-liga tbody td img {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "aplicacion-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "click.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "http-proxy-middleware": "^3.0.5",
+    "node-fetch": "^2.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamuelPG2004/aplicacionfutbol.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamuelPG2004/aplicacionfutbol/issues"
+  },
+  "homepage": "https://github.com/SamuelPG2004/aplicacionfutbol#readme"
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Equipo</title>
+  <link rel="stylesheet" href="equipo.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">⬅ Volver</a>
+    <h1 id="titulo">Cargando equipo...</h1>
+  </header>
+
+  <main>
+    <!-- Header del equipo (escudo y nombre) -->
+    <section id="equipoHeaderContainer">
+      <!-- se rellenará desde JS -->
+    </section>
+
+    <!-- Estadísticas -->
+    <section id="equipoStats">
+      <p>Cargando estadísticas...</p>
+    </section>
+
+    <!-- Últimos partidos -->
+    <section>
+      <h2>Últimos resultados</h2>
+      <div id="ultimosPartidos" class="partidos-container">Cargando...</div>
+    </section>
+
+    <!-- Próximos partidos -->
+    <section>
+      <h2>Próximos partidos</h2>
+      <div id="proximosPartidos" class="proximos-grid">Cargando...</div>
+    </section>
+  </main>
+
+  <!-- Modal para detalle de partido -->
+  <div id="matchModalOverlay" class="modal-overlay" aria-hidden="true">
+    <div class="match-modal" role="dialog" aria-modal="true" id="matchModal">
+      <header>
+        <div class="match-title" id="matchModalTitle">Cargando...</div>
+        <button class="close-btn" id="matchModalClose">Cerrar</button>
+      </header>
+      <div id="matchModalBody">
+        <div class="match-events" id="matchEvents"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="equipo.js"></script>
+</body>
+</html>
